@@ -1,0 +1,50 @@
+%YAML 1.2
+---
+
+file_extensions:
+  - mbti
+
+name: MoonBit Interface
+scope: source.moonbit
+version: 2
+extends: Packages/MoonBit/MoonBit.sublime-syntax
+hidden: true
+
+contexts:
+  main:
+    - include: type-declarations
+    - include: package-declaration
+    - include: alias-declarations
+    - include: function-declarations
+    - include: variables
+    - include: strings
+    - include: keywords
+    - include: numbers
+    - include: operators
+
+  package-declaration:
+    - match: '^(package)\s+(.+)'
+      captures:
+        1: keyword.declaration.moonbit
+        2: string.other.moonbit
+
+  alias-declarations:
+    - match: '^(alias)\s+(\S+)\s+(as)\s+(\S+)'
+      captures:
+        1: keyword.declaration.alias.moonbit
+        2: string.other.moonbit
+        3: keyword.control.import.moonbit
+        4: string.other.moonbit
+
+  function-declarations:
+    - include: function-definitions
+
+  return-type:
+    - match: $\n?
+      pop: true
+    - match: '({{ident_upper}})(\[)'
+      captures:
+        1: support.type.moonbit
+        2: punctuation.definition.generic.begin.moonbit
+      push: bracket-body
+    - include: types

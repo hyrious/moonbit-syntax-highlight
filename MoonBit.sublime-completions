@@ -1,0 +1,125 @@
+{
+  "scope": "source.moonbit",
+  "completions": [
+    {
+      "trigger": "init",
+      "contents": "fn init {\n\t$1\n}",
+      "kind": "snippet",
+      "details": "fn init { … }"
+    },
+    {
+      "trigger": "main",
+      "contents": "fn main {\n\t$1\n}",
+      "kind": "snippet",
+      "details": "fn main { … }",
+    },
+    {
+      "trigger": "f",
+      "contents": "fn($1) {${0:$TM_SELECTED_TEXT}}",
+      "kind": "snippet",
+      "details": "fn() { … }",
+    },
+    {
+      "trigger": "fn",
+      "contents": "fn ${1:function_name}(${2:argument}) -> ${3:ReturnType} {\n\t${0:// body...}\n}",
+      "kind": "snippet",
+      "details": "fn … { … }",
+    },
+    {
+      "trigger": "struct",
+      "contents": "struct ${1:TypeName} {\n\t${2:body}\n}",
+      "kind": "snippet",
+      "details": "struct … { … }",
+    },
+    {
+      "trigger": "enum",
+      "contents": "enum ${1:TypeName} {\n\t${2:body}\n}",
+      "kind": "snippet",
+      "details": "enum … { … }",
+    },
+    {
+      "trigger": "derive",
+      "contents": "derive(${1:interface_name})",
+      "kind": "snippet",
+      "details": "derive(…)",
+    },
+    {
+      "trigger": "while",
+      "contents": "while ${1:condition} {\n\t${2:body}\n}",
+      "kind": "snippet",
+      "details": "while … { … }",
+    },
+    {
+      "trigger": "test",
+      "contents": "test \"${1:name}\" {\n\t${2:body}\n}",
+      "kind": "snippet",
+      "details": "test … { … }",
+    },
+    {
+      "trigger": "for",
+      "contents": "for ${1:i} = 0; ${1:i} < ${2:count}; ${1:i} = ${1:i} + 1 {\n\t${2:$TM_SELECTED_TEXT}}",
+      "kind": "snippet",
+      "details": "for … { … }",
+    },
+    {
+      "trigger": "try",
+      "contents": "try {\n\t${1:body}\n} catch {$0}",
+      "kind": "snippet",
+      "details": "try { … } catch { … }",
+    },
+    {
+      "trigger": "guard",
+      "contents": "guard ${1:condition} else { ${2:body} }",
+      "kind": "snippet",
+      "details": "guard … else { … }",
+    },
+    {
+      "trigger": "guard let",
+      "contents": "guard let ${1:ok} = ${2:expression} else { ${3:body} }",
+      "kind": "snippet",
+      "details": "guard let … = … else { … }",
+    },
+    {
+      "trigger": "assert",
+      "contents": "assert_true!(${1:$TM_SELECTED_TEXT})",
+      "kind": "snippet",
+      "details": "assert_true!(…)",
+    },
+    {
+      "trigger": "assert_eq",
+      "contents": "assert_eq!($1, $2)",
+      "kind": "snippet",
+      "details": "assert_eq!(…, …)",
+    },
+    {
+      "trigger": "const",
+      "contents": "const ${1:CONST} = ${2:init}",
+      "kind": "snippet",
+      "details": "const … = …",
+    },
+    {
+      "trigger": "let",
+      "contents": "let ${1:pattern} = ${2:expr}",
+      "kind": "snippet",
+      "details": "let … = …",
+    },
+    {
+      "trigger": "else",
+      "contents": "else {\n\t${1}\n}",
+      "kind": "snippet",
+      "details": "else { … }",
+    },
+    {
+      "trigger": "if",
+      "contents": "if ${1:condition} {\n\t${2:body}\n}",
+      "kind": "snippet",
+      "details": "if … { … }",
+    },
+    {
+      "trigger": "println",
+      "contents": "println($1)",
+      "kind": "snippet",
+      "details": "println(…)",
+    }
+  ]
+}
