@@ -96,6 +96,11 @@ contexts:
         4: entity.name.function.moonbit
         5: punctuation.section.group.begin.moonbit
       push: parameters
+    - match: \b(fn)\s+(main)\s*(\{)
+      captures:
+        1: keyword.declaration.function.moonbit
+        2: keyword.other.moonbit
+        3: punctuation.section.group.begin.moonbit
 
   type-parameters:
     - match: '(\])\s*(\()'
