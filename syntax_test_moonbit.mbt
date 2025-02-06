@@ -146,3 +146,16 @@ fn head_opt(list: @immut/list.T[Int]) -> Option[Int] {
 //                      ^^^^ support.type.builtin
   }
 }
+
+impl[X] Default for T[X] with default() { Nil }
+//  ^ punctuation.definition.generic.begin
+//   ^ variable.parameter.generic
+//    ^ punctuation.definition.generic.end
+
+pub(open) trait Compare: Eq {
+//        ^^^^^ keyword.declaration.trait
+//              ^^^^^^^ entity.name.trait
+//                     ^ punctuation.separator
+//                       ^^ support.type.builtin
+  compare(Self, Self) -> Int
+}

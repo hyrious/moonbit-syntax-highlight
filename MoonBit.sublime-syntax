@@ -21,6 +21,7 @@ variables:
   ident_lower: '[a-z][\w_]*'
   ident_upper: '[A-Z][\w_]*'
   ident_path: '[a-z][\w_/]*'
+  builtin_types: '(?:Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some|Array|FixedArray|Int|Int64|UInt|UInt64|Option|Result|Byte|Bool|Unit|String|Float|Double)'
   escaped_char: '\\(?:[nrtb\"''\\]|x\h{2}|o[0-3][0-7]{2}|u\{(?:\h_*){1,6}\})'
   int_suffixes: '[uUlL]+'
   dec_literal: '\d[\d_]*'
@@ -71,10 +72,23 @@ contexts:
       captures:
         1: keyword.declaration.type.moonbit
         2: entity.name.type.moonbit
-    - match: \b(trait|impl)\s+({{ident_upper}})
+    - match: \b(impl)\s*(\[)
+      captures:
+        1: keyword.declaration.trait.moonbit
+        2: punctuation.definition.generic.begin.moonbit
+      push: type-parameters
+    - match: \b(impl)\b
+      scope: keyword.declaration.trait.moonbit
+    - match: \b(trait)\s+({{ident_upper}})
       captures:
         1: keyword.declaration.trait.moonbit
         2: entity.name.trait.moonbit
+    - match: \b(enum)\s+({{ident_upper}})\s*(\[)
+      captures:
+        1: keyword.declaration.enum.moonbit
+        2: entity.name.enum.moonbit
+        3: punctuation.definition.generic.begin.moonbit
+      push: type-parameters
     - match: \b(enum)\s+({{ident_upper}})
       captures:
         1: keyword.declaration.enum.moonbit
@@ -216,10 +230,17 @@ contexts:
         2: keyword.operator.assignment.moonbit
 
   types:
-    - match: \b(Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some)\b
+    - match: \b({{builtin_types}})\s*(\[)
+      captures:
+        1: storage.type.moonbit
+        2: punctuation.definition.generic.begin.moonbit
+    - match: \b({{builtin_types}})\b
       scope: support.type.builtin.moonbit
-    - match: \b(Array|FixedArray|Int|Int64|UInt|UInt64|Option|Result|Byte|Bool|Unit|String|Float|Double)\b
-      scope: support.type.builtin.moonbit
+    - match: \b({{ident_upper}})\s*(\[)
+      captures:
+        1: storage.type.moonbit
+        2: punctuation.definition.generic.begin.moonbit
+      push: type-parameters
     - match: \b({{ident_upper}})\b
       scope: storage.type.moonbit
 
