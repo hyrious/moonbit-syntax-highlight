@@ -136,6 +136,7 @@ test {
 }
 
 fn head_opt(list: @immut/list.T[Int]) -> Option[Int] {
+//                 ^^^^^^^^^^ variable.other.constant
   match list {
     Nil => None
 //  ^^^ support.type.builtin

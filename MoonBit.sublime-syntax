@@ -20,6 +20,7 @@ variables:
   # https://docs.moonbitlang.com/en/latest/language/introduction.html#naming-conventions
   ident_lower: '[a-z][\w_]*'
   ident_upper: '[A-Z][\w_]*'
+  ident_path: '[a-z][\w_/]*'
   escaped_char: '\\(?:[nrtb\"''\\]|x\h{2}|o[0-3][0-7]{2}|u\{(?:\h_*){1,6}\})'
   int_suffixes: '[uUlL]+'
   dec_literal: '\d[\d_]*'
@@ -201,7 +202,7 @@ contexts:
       captures:
         1: support.type.moonbit
         2: punctuation.accessor.double-colon.moonbit
-    - match: '(@)({{ident_lower}})'
+    - match: '(@)({{ident_path}})'
       captures:
         1: punctuation.definition.variable.moonbit
         2: variable.other.constant.moonbit
