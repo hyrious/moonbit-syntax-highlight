@@ -134,3 +134,14 @@ test {
   div(1, 2) |> ignore
 //          ^^ keyword.operator
 }
+
+fn head_opt(list: @immut/list.T[Int]) -> Option[Int] {
+  match list {
+    Nil => None
+//  ^^^ support.type.builtin
+//         ^^^^ support.type.builtin
+    Cons(head, tail) => Some(head)
+//  ^^^^ support.type.builtin
+//                      ^^^^ support.type.builtin
+  }
+}
