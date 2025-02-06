@@ -208,8 +208,12 @@ contexts:
         2: variable.other.constant.moonbit
     - match: '({{ident_lower}})(~)'
       captures:
-        1: entity.name.label.moonbit
+        1: entity.name.label.moonbit variable.parameter.moonbit
         2: punctuation.definition.label.moonbit
+    - match: '({{ident_lower}})(=)'
+      captures:
+        1: variable.parameter.moonbit
+        2: keyword.operator.assignment.moonbit
 
   types:
     - match: \b(Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some|Nil|Cons)\b
