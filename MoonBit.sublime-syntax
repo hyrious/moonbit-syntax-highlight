@@ -116,6 +116,12 @@ contexts:
         1: keyword.declaration.function.moonbit
         2: keyword.other.moonbit
         3: punctuation.section.group.begin.moonbit
+    - match: \b(with)\s+({{ident_lower}})\s*(\()
+      captures:
+        1: keyword.declaration.impl.moonbit
+        2: entity.name.function.moonbit
+        3: punctuation.section.group.begin.moonbit
+      push: parameters
 
   type-parameters:
     - match: '(\])\s*(\()'
@@ -232,8 +238,9 @@ contexts:
   types:
     - match: \b({{builtin_types}})\s*(\[)
       captures:
-        1: storage.type.moonbit
+        1: support.type.builtin.moonbit
         2: punctuation.definition.generic.begin.moonbit
+      push: type-parameters
     - match: \b({{builtin_types}})\b
       scope: support.type.builtin.moonbit
     - match: \b({{ident_upper}})\s*(\[)
