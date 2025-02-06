@@ -216,12 +216,12 @@ contexts:
         2: keyword.operator.assignment.moonbit
 
   types:
-    - match: \b(Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some|Nil|Cons)\b
+    - match: \b(Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some)\b
       scope: support.type.builtin.moonbit
     - match: \b(Array|FixedArray|Int|Int64|UInt|UInt64|Option|Result|Byte|Bool|Unit|String|Float|Double)\b
       scope: support.type.builtin.moonbit
     - match: \b({{ident_upper}})\b
-      scope: support.class.moonbit
+      scope: storage.type.moonbit
 
   keywords:
     - include: bool

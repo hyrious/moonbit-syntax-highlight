@@ -98,7 +98,7 @@ let str =
 //                             ^ variable.parameter.generic
 //                                     ^^^^ keyword.other
 //                                          ^ punctuation.separator
-//                                            ^^^^^^^^^ support.class
+//                                            ^^^^^^^^^ storage.type
 //                                                                     ^^ storage.type.function.arrow
 //                                                                        ^^^^ support.type.builtin
 
@@ -139,10 +139,10 @@ fn head_opt(list: @immut/list.T[Int]) -> Option[Int] {
 //                 ^^^^^^^^^^ variable.other.constant
   match list {
     Nil => None
-//  ^^^ support.type.builtin
+//  ^^^ storage.type
 //         ^^^^ support.type.builtin
     Cons(head, tail) => Some(head)
-//  ^^^^ support.type.builtin
+//  ^^^^ storage.type
 //                      ^^^^ support.type.builtin
   }
 }
