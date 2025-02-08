@@ -159,3 +159,35 @@ pub(open) trait Compare: Eq {
 //                       ^^ support.type.builtin
   compare(Self, Self) -> Int
 }
+
+fn f() -> Unit!
+//            ^ keyword.declaration.error
+
+fn g!() -> Unit
+//  ^ keyword.declaration.error
+
+fn h() -> Unit!Error
+//            ^ keyword.declaration.error
+
+fn h(f : (Int) -> Int!, x : Int) -> Unit
+//                   ^ keyword.declaration.error
+
+  let _ = h(fn! { x => raise IntError(x) }, 0)
+//            ^ keyword.declaration.error
+
+  let _ = h(fn!(x) { raise IntError(x) }, 0)
+//            ^ keyword.declaration.error
+
+try {
+  f1!()
+//  ^ variable.function
+  f2!()
+} catch! {
+  //   ^ keyword.control
+  E1(_) => ...
+}
+
+pub fn fail[T](msg : String, ~loc : SourceLoc = _) -> T!Failure {
+  //                         ^ punctuation.definition.label
+  raise Failure("FAILED: \{loc} \{msg}")
+}

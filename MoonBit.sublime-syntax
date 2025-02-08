@@ -21,7 +21,7 @@ variables:
   ident_lower: '[a-z][\w_]*'
   ident_upper: '[A-Z][\w_]*'
   ident_path: '[a-z][\w_/]*'
-  builtin_types: '(?:Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some|Array|FixedArray|Int|Int64|UInt|UInt64|Option|Result|Byte|Bool|Unit|String|Float|Double)'
+  builtin_types: '(?:Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some|Array|FixedArray|Int|Int64|UInt|UInt64|Option|Result|Byte|Bool|Unit|String|Float|Double|Error)'
   escaped_char: '\\(?:[nrtb\"''\\]|x\h{2}|o[0-3][0-7]{2}|u\{(?:\h_*){1,6}\})'
   int_suffixes: '[uUlL]+'
   dec_literal: '\d[\d_]*'
@@ -95,21 +95,23 @@ contexts:
         2: entity.name.enum.moonbit
 
   function-definitions:
-    - match: \b(fn)\s+(?:({{ident_upper}})(\:\:))*({{ident_lower}})\s*(\[)
+    - match: \b(fn)\s+(?:({{ident_upper}})(\:\:))*({{ident_lower}})(!?)\s*(\[)
       captures:
         1: keyword.declaration.function.moonbit
         2: support.type.moonbit
         3: punctuation.accessor.double-colon.moonbit
         4: entity.name.function.moonbit
-        5: punctuation.definition.generic.begin.moonbit
+        5: keyword.declaration.error.moonbit
+        6: punctuation.definition.generic.begin.moonbit
       push: type-parameters
-    - match: \b(fn)\s+(?:({{ident_upper}})(\:\:))*({{ident_lower}})\s*(\()
+    - match: \b(fn)\s+(?:({{ident_upper}})(\:\:))*({{ident_lower}})(!?)\s*(\()
       captures:
         1: keyword.declaration.function.moonbit
         2: support.type.moonbit
         3: punctuation.accessor.double-colon.moonbit
         4: entity.name.function.moonbit
-        5: punctuation.section.group.begin.moonbit
+        5: keyword.declaration.error.moonbit
+        6: punctuation.section.group.begin.moonbit
       push: parameters
     - match: \b(fn)\s+(main)\s*(\{)
       captures:
@@ -148,8 +150,10 @@ contexts:
     - include: expressions
     - match: '\b{{ident_lower}}\b'
       scope: variable.parameter.moonbit
-    - match: '\b{{ident_upper}}\b'
+    - match: '\b{{ident_upper}}\b(!?)'
       scope: support.type.moonbit
+      captures:
+        1: keyword.declaration.error.moonbit
     - match: ':'
       scope: punctuation.separator.type.moonbit
     - match: \(
@@ -205,7 +209,7 @@ contexts:
         1: keyword.operator.logical.moonbit
         2: punctuation.section.group.begin.moonbit
       push: function-arguments
-    - match: '\b({{ident_lower}}!{,2})\s*(\()'
+    - match: '\b({{ident_lower}}!{,2}\??)\s*(\()'
       captures:
         1: variable.function.moonbit
         2: punctuation.section.group.begin.moonbit
@@ -236,20 +240,26 @@ contexts:
         2: keyword.operator.assignment.moonbit
 
   types:
-    - match: \b({{builtin_types}})\s*(\[)
+    - match: \b({{builtin_types}})(!?)\s*(\[)
       captures:
         1: support.type.builtin.moonbit
-        2: punctuation.definition.generic.begin.moonbit
+        2: keyword.declaration.error.moonbit
+        3: punctuation.definition.generic.begin.moonbit
       push: type-parameters
-    - match: \b({{builtin_types}})\b
+    - match: \b({{builtin_types}})\b(!?)
       scope: support.type.builtin.moonbit
-    - match: \b({{ident_upper}})\s*(\[)
+      captures:
+        2: keyword.declaration.error.moonbit
+    - match: \b({{ident_upper}})(!?)\s*(\[)
       captures:
         1: storage.type.moonbit
-        2: punctuation.definition.generic.begin.moonbit
+        2: keyword.declaration.error.moonbit
+        3: punctuation.definition.generic.begin.moonbit
       push: type-parameters
-    - match: \b({{ident_upper}})\b
+    - match: \b({{ident_upper}})\b(!?)
       scope: storage.type.moonbit
+      captures:
+        2: keyword.declaration.error.moonbit
 
   keywords:
     - include: bool
@@ -270,15 +280,19 @@ contexts:
       scope: keyword.declaration.variable.moonbit
     - match: \b(const|mut)\b
       scope: storage.modifier.moonbit
-    - match: \b(fn)\b
+    - match: \b(fn)\b(!?)
       scope: keyword.declaration.function.moonbit
+      captures:
+        2: keyword.declaration.error.moonbit
     - match: \b(impl|with|derive)\b
       scope: keyword.declaration.impl.moonbit
     - match: \b(type!?|enum|struct|trait|typealias)\b
       scope: keyword.declaration.type.moonbit
     - match: \b(guard|else|for|if|loop|match|while|in)\b
       scope: keyword.control.moonbit
-    - match: \b(try|catch!?|raise)\b
+    - match: \b(catch!)
+      scope: keyword.control.moonbit
+    - match: \b(try|catch|raise)\b
       scope: keyword.control.moonbit
     - match: \b(break|continue)\b
       scope: keyword.control.moonbit
@@ -425,6 +439,8 @@ contexts:
       scope: keyword.operator.assignment.moonbit
     - match: '\.\.<|\.\.=|\.\.(?!\.)'
       scope: keyword.operator.range.moonbit
+    - match: '~'
+      scope: punctuation.definition.label.moonbit
     - match: ','
       scope: punctuation.separator.moonbit
     - match: ';'
