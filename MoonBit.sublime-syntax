@@ -93,6 +93,16 @@ contexts:
       captures:
         1: keyword.declaration.enum.moonbit
         2: entity.name.enum.moonbit
+    - match: \b(struct)\s+({{ident_upper}})\s*(\[)
+      captures:
+        1: keyword.declaration.struct.moonbit
+        2: entity.name.struct.moonbit
+        3: punctuation.definition.generic.begin.moonbit
+      push: type-parameters
+    - match: \b(struct)\s+({{ident_upper}})
+      captures:
+        1: keyword.declaration.struct.moonbit
+        2: entity.name.struct.moonbit
 
   function-definitions:
     - match: \b(fn)\s+(?:({{ident_upper}})(\:\:))*({{ident_lower}})(!?)\s*(\[)
