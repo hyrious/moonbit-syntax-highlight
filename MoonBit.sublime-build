@@ -1,5 +1,5 @@
 {
   "cmd": ["moon", "run", "$file"],
   "selector": "source.moonbit",
-  "file_regex": "^moon/run/single/([^:]*):(\\d+):(\\d+)-\\d+:\\d+\\s([^\\n]+)"
+  "file_regex": "^moon[/\\\\]run[/\\\\]single[/\\\\]([^:]*):(\\d+):(\\d+)-\\d+:\\d+\\s([^\\n]+)"
 }
