@@ -63,17 +63,17 @@
     { "trigger": "Tuple", "annotation": "built-in", "kind": "type" },
     { "trigger": "Iter", "annotation": "built-in", "kind": "type" },
 
-    { "trigger": "abort", "contents": "abort($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "assert_eq!", "contents": "assert_eq!($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "assert_false!", "contents": "assert_false!($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "assert_not_eq!", "contents": "assert_not_eq!($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "assert_true!", "contents": "assert_true!($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "fail!", "contents": "fail!($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "ignore", "contents": "ignore($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "inspect!", "contents": "inspect!($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "panic", "contents": "panic($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "physical_equal", "contents": "physical_equal($1)", "annotation": "f", "kind": "function" },
-    { "trigger": "println", "contents": "println($1)", "annotation": "f", "kind": "function" },
+    { "trigger": "abort", "contents": "abort($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "assert_eq!", "contents": "assert_eq!($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "assert_false!", "contents": "assert_false!($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "assert_not_eq!", "contents": "assert_not_eq!($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "assert_true!", "contents": "assert_true!($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "fail!", "contents": "fail!($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "ignore", "contents": "ignore($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "inspect!", "contents": "inspect!($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "panic", "contents": "panic($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "physical_equal", "contents": "physical_equal($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "println", "contents": "println($1)", "annotation": "built-in", "kind": "function" },
 
     // Snippets
     {

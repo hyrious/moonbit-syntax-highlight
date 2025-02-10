@@ -19,7 +19,7 @@ fn man!() -> Unit {
   for f in methods {
     if f == "not" || f.starts_with("op_") { continue }
     println(
-      $|{ "trigger": "\{f}", "contents": "\{f}($1)", "annotation": "f", "kind": "function" },
+      $|{ "trigger": "\{f}", "contents": "\{f}($1)", "annotation": "built-in", "kind": "function" },
     )
   }
 }
