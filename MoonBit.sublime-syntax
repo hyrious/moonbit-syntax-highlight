@@ -21,7 +21,8 @@ variables:
   ident_lower: '[a-z][\w_]*'
   ident_upper: '[A-Z][\w_]*'
   ident_path: '[a-z][\w_/]*'
-  builtin_types: '(?:Eq|Compare|Hash|Show|Default|ToJson|FromJson|None|Some|Array|FixedArray|Int|Int64|UInt|UInt64|Option|Result|Byte|Bool|Unit|String|Float|Double|Error)'
+  builtin_types: '(?:Eq|Compare|Hash|Show|Logger|Default|ToJson|FromJson|None|Some|ArrayView|Array|FixedArray|Int16|Int64|Int|UInt16|UInt64|UInt|BigInt|Option|Result|BytesView|Bytes?|Bool|Unit|Char|String|Float|Double|Error|Tuple|Hasher|Iter2?|IterResult|Json|Map|Set|StringBuilder|UninitializedArray)'
+  op_functions: '(?:not|land|lnot|lor|lxor|op_add|op_sub|op_div|op_mul|op_mod|op_equal|op_shl|op_shr)'
   escaped_char: '\\(?:[nrtb\"''\\]|x\h{2}|o[0-3][0-7]{2}|u\{(?:\h_*){1,6}\})'
   int_suffixes: '[uUlL]+'
   dec_literal: '\d[\d_]*'
@@ -256,20 +257,22 @@ contexts:
         2: keyword.declaration.error.moonbit
         3: punctuation.definition.generic.begin.moonbit
       push: type-parameters
-    - match: \b({{builtin_types}})\b(!?)
+    - match: \b({{builtin_types}})\b(!?)(\??)
       scope: support.type.builtin.moonbit
       captures:
         2: keyword.declaration.error.moonbit
+        3: keyword.declaration.optional.moonbit
     - match: \b({{ident_upper}})(!?)\s*(\[)
       captures:
         1: storage.type.moonbit
         2: keyword.declaration.error.moonbit
         3: punctuation.definition.generic.begin.moonbit
       push: type-parameters
-    - match: \b({{ident_upper}})\b(!?)
+    - match: \b({{ident_upper}})\b(!?)(\??)
       scope: storage.type.moonbit
       captures:
         2: keyword.declaration.error.moonbit
+        3: keyword.declaration.optional.moonbit
 
   keywords:
     - include: bool
@@ -465,5 +468,5 @@ contexts:
       scope: keyword.operator.none.moonbit
     - match: '\+|-|\*|\/|%|\|>|>>|<<|&&|\|\||\&|\||<=?|>=?|==|!='
       scope: keyword.operator.moonbit
-    - match: \b(not|lsl|lsr|asr|op_add|op_sub|op_div|op_mul|op_mod)\b
+    - match: \b{{op_functions}}\b
       scope: keyword.operator.word.moonbit
