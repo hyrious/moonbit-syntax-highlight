@@ -69,6 +69,12 @@ contexts:
     - include: expressions
 
   type-declarations:
+    - match: \b(type!?)\s+({{ident_upper}})(\[)
+      captures:
+        1: keyword.declaration.type.moonbit
+        2: entity.name.type.moonbit
+        3: punctuation.definition.generic.begin.moonbit
+      push: type-parameters
     - match: \b(type!?)\s+({{ident_upper}})
       captures:
         1: keyword.declaration.type.moonbit
@@ -128,7 +134,7 @@ contexts:
       captures:
         1: keyword.declaration.function.moonbit
         2: keyword.other.moonbit
-        3: punctuation.section.group.begin.moonbit
+        3: punctuation.section.block.begin.moonbit
     - match: \b(with)\s+({{ident_lower}})\s*(\()
       captures:
         1: keyword.declaration.impl.moonbit
@@ -178,7 +184,7 @@ contexts:
     - match: $\n?
       pop: true
     - match: \{
-      scope: punctuation.section.group.begin.moonbit
+      scope: punctuation.section.block.begin.moonbit
       pop: true
     - match: '='
       scope: keyword.operator.assignment.moonbit
