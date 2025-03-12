@@ -148,6 +148,9 @@ contexts:
         1: punctuation.definition.generic.end.moonbit
         2: punctuation.section.group.begin.moonbit
       set: parameters
+    - match: \(
+      scope: punctuation.section.group.begin.moonbit
+      push: parameters
     - match: \]
       scope: punctuation.definition.generic.end.moonbit
       pop: true
