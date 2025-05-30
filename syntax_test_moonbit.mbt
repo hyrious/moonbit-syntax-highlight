@@ -16,6 +16,9 @@
    0x0_123.e4P-5
 // ^^^^^^^^^^^^^ constant.numeric.float
 
+   1..2
+//  ^^ keyword.operator.range
+
   "Hello, \x00\" world"
 //^^^^^^^^^^^^^^^^^^^^^ string.quoted.double
 //^ punctuation.definition.string.begin
@@ -98,7 +101,7 @@ let str =
 //                             ^ variable.parameter.generic
 //                                     ^^^^ keyword.other
 //                                          ^ punctuation.separator
-//                                            ^^^^^^^^^ storage.type
+//                                            ^^^^^^^^^ support.type.builtin
 //                                                                     ^^ storage.type.function.arrow
 //                                                                        ^^^^ support.type.builtin
 
@@ -191,3 +194,14 @@ pub fn fail[T](msg : String, ~loc : SourceLoc = _) -> T!Failure {
   //                         ^ punctuation.definition.label
   raise Failure("FAILED: \{loc} \{msg}")
 }
+
+   package "moonbitlang/core/array"
+// ^^^^^^^ keyword.declaration
+
+   #deprecated
+// ^^^^^^^^^^^ punctuation.definition.comment entity.other.attribute-name.documentation
+   fn[T] dump(T, name? : String, loc~ : @builtin.SourceLoc = _) -> T
+//   ^ punctuation.definition.generic.begin
+//           ^ punctuation.section.group.begin
+//               ^^^^ variable.parameter
+//                                      ^ punctuation.definition.variable

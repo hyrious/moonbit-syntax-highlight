@@ -74,6 +74,7 @@
     { "trigger": "panic", "contents": "panic($1)", "annotation": "built-in", "kind": "function" },
     { "trigger": "physical_equal", "contents": "physical_equal($1)", "annotation": "built-in", "kind": "function" },
     { "trigger": "println", "contents": "println($1)", "annotation": "built-in", "kind": "function" },
+    { "trigger": "repr", "contents": "repr($1)", "annotation": "built-in", "kind": "function" },
 
     // Snippets
     {

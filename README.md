@@ -1,4 +1,4 @@
-# MoonBit syntax highlight
+# MoonBit Syntax Highlight
 
 [![](https://img.shields.io/badge/license-MIT-brightgreen)](./LICENSE.txt)
 [![](https://img.shields.io/badge/Sublime%20Text-4-ff9800)](https://www.sublimetext.com/blog/articles/sublime-text-4)
@@ -40,6 +40,24 @@ It is an executable on Mac/Linux. But on Windows you may need to change the `"co
 
 ```jsonc
 "command": ["node", "C:\\Users\\yourname\\.moon\\bin\\lsp-server.js"],
+```
+
+## Add Syntax Highlighting to Hover Popups
+
+<figure>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./images/popup-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./images/popup-light.png">
+    <img alt="popup" src="./images/popup-light.png">
+  </picture>
+</figure>
+
+Sublime LSP uses [MdPopups](https://facelessuser.github.io/sublime-markdown-popups/settings/#mdpopupssublime_user_lang_map) to render the hovering documentations, add the following config to your global Preferences.sublime-settings (`Preferences: settings` from the command palette) to enable it.
+
+```jsonc
+"mdpopups.sublime_user_lang_map": {
+  "moonbit": [["moonbit", "mbti", "mbt"], ["MoonBit/MoonBit"]]
+}
 ```
 
 ## License
