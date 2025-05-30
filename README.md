@@ -44,15 +44,15 @@ It is an executable on Mac/Linux. But on Windows you may need to change the `"co
 
 ## Add Syntax Highlighting to Hover Popups
 
-<figure>
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./images/popup-dark.png">
     <source media="(prefers-color-scheme: light)" srcset="./images/popup-light.png">
-    <img alt="popup" src="./images/popup-light.png">
+    <img alt="popup" src="./images/popup-light.png" width="534">
   </picture>
-</figure>
+</p>
 
-Sublime LSP uses [MdPopups](https://facelessuser.github.io/sublime-markdown-popups/settings/#mdpopupssublime_user_lang_map) to render the hovering documentations, add the following config to your global Preferences.sublime-settings (`Preferences: settings` from the command palette) to enable it.
+Sublime LSP uses [MdPopups](https://facelessuser.github.io/sublime-markdown-popups/settings/#mdpopupssublime_user_lang_map) to render the hovering documentations, add the following config to your global preferences (`Preferences: settings` from the command palette) to enable it.
 
 ```jsonc
 "mdpopups.sublime_user_lang_map": {
