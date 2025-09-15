@@ -28,18 +28,11 @@
   "clients": {
     "moonbit-lsp": {
       "enabled": true,
-      "command": ["/Users/yourname/.moon/bin/lsp-server.js"],
+      "command": ["/Users/yourname/.moon/bin/moonbit-lsp"],
       "selector": "source.moonbit"
     }
   },
 }
-```
-
-`"/Users/yourname/.moon/bin/lsp-server.js"` is the place where moonbit places its LSP server.
-It is an executable on Mac/Linux. But on Windows you may need to change the `"command"` to something like
-
-```jsonc
-"command": ["node", "C:\\Users\\yourname\\.moon\\bin\\lsp-server.js"],
 ```
 
 ## Add Syntax Highlighting to Hover Popups

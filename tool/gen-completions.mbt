@@ -1,12 +1,12 @@
 // Note: clone the core repository before run this file.
 
 fn main {
-  try { man!() }
+  try { man() }
   catch { e => println(e) }
 }
 
-fn man!() -> Unit {
-  let content = @fs.read_file_to_string!("../core/builtin/builtin.mbti")
+fn man() -> Unit raise {
+  let content = @fs.read_file_to_string("../core/builtin/builtin.mbti")
   let methods = Set::new()
 
   let mut skip_next_line = false
@@ -40,9 +40,8 @@ fn man!() -> Unit {
 
   for f in methods {
     if f == "not" || f.has_prefix("op_") { continue }
-    println(
-      $|{ "trigger": "\{f}", "contents": "\{f}($1)", "annotation": "built-in", "kind": "function" },
-    )
+    let line = $|{ "trigger": "\{f}", "contents": "\{f}($1)", "annotation": "built-in", "kind": "function" },
+    println(line)
   }
 }
 

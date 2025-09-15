@@ -157,15 +157,15 @@
     },
     {
       "trigger": "assert",
-      "contents": "assert_true!(${1:$TM_SELECTED_TEXT})",
+      "contents": "assert_true(${1:$TM_SELECTED_TEXT})",
       "kind": "snippet",
-      "details": "assert_true!(…)",
+      "details": "assert_true(…)",
     },
     {
       "trigger": "assert_eq",
-      "contents": "assert_eq!($1, $2)",
+      "contents": "assert_eq($1, $2)",
       "kind": "snippet",
-      "details": "assert_eq!(…, …)",
+      "details": "assert_eq(…, …)",
     },
     {
       "trigger": "const",

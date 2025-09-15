@@ -115,6 +115,12 @@ contexts:
         2: entity.name.struct.moonbit
 
   function-definitions:
+    - match: (\#)({{ident_lower}})\s*(\()
+      captures:
+        1: punctuation.definition.annotation.moonbit
+        2: variable.annotation.moonbit
+        3: punctuation.section.group.begin.moonbit
+      push: parameters
     - match: \b(fn)\s+(?:({{ident_upper}})(\:\:))*({{ident_lower}})(!?)\s*(\[)
       captures:
         1: keyword.declaration.function.moonbit
@@ -169,6 +175,9 @@ contexts:
     - match: \(
       scope: punctuation.section.group.begin.moonbit
       push: parameters
+    - match: \[
+      scope: punctuation.definition.generic.begin.moonbit
+      push: type-parameters
     - match: \]
       scope: punctuation.definition.generic.end.moonbit
       pop: true
@@ -205,6 +214,8 @@ contexts:
   return-type:
     - match: $\n?
       pop: true
+    - match: \b(raise)\b
+      scope: keyword.control.moonbit
     - match: \{
       scope: punctuation.section.block.begin.moonbit
       pop: true
@@ -215,6 +226,8 @@ contexts:
       scope: keyword.declaration.async.moonbit
     - match: \!
       scope: keyword.declaration.error.moonbit
+    - match: \?
+      scope: keyword.operator.none.moonbit
     - match: '(@)({{ident_path}})'
       captures:
         1: punctuation.definition.variable.moonbit
@@ -334,7 +347,7 @@ contexts:
       scope: keyword.other.moonbit
     - match: \b(Self)\b
       scope: storage.type.moonbit
-    - match: \b(let)\b
+    - match: \b(letrec|let|and)\b
       scope: keyword.declaration.variable.moonbit
     - match: \b(const|mut)\b
       scope: storage.modifier.moonbit
