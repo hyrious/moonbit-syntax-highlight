@@ -121,6 +121,10 @@ contexts:
         2: variable.annotation.moonbit
         3: punctuation.section.group.begin.moonbit
       push: parameters
+    - match: (\#)({{ident_lower}})\s*
+      captures:
+        1: punctuation.definition.annotation.moonbit
+        2: variable.annotation.moonbit
     - match: \b(fn)\s+(?:({{ident_upper}})(\:\:))*({{ident_lower}})(!?)\s*(\[)
       captures:
         1: keyword.declaration.function.moonbit
